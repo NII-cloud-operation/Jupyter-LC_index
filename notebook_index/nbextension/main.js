@@ -47,7 +47,7 @@ define([
 
     function load_index(data) {
         var indexFiles = data['content'].filter(function(f) {
-            return (/^README\.[a-z0-9]+$/i).test(f['name']);
+            return f['type'] == 'file' && (/^README\.[a-z0-9]+$/i).test(f['name']);
         });
         console.log('Indices: ', indexFiles);
         var matched = indexFiles.filter(function(indexFile) {
