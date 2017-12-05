@@ -24,68 +24,67 @@ define([
         return utils.url_path_join(baseUrl, 'files/' + path);
     }
 
-    function get_renderer(f) {
-        if(f['type'] == 'file') {
-            if((/.md$/i).test(f['name'])) {
-                return {'priority': 1,
-                        'renderer': function(data) {
-                            return $(marked(data));
-                        }};
-            }
+    function load_desc(indexFiles) {
+        var matched = indexFiles.filter(function(indexFile) {
+            return (/.md$/i).test(indexFile['name']);
+        });
+        if(matched.length === 0) {
+            console.log('No description: ', indexFiles);
+            return;
         }
-        return null;
+        $.ajax({
+            url: get_content_url(matched[0]['path'])
+        }).done(function(data) {
+            $('#notebook_index_desc .index_filename').text(matched[0]['name']);
+            var panel = $('#notebook_index_desc .index_content');
+            panel.empty();
+            panel.append($(marked(data)));
+            $('#notebook_index_desc').show();
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            console.error(errorThrown);
+        });
     }
 
     function load_index(data) {
         var indexFiles = data['content'].filter(function(f) {
             return (/^README\.[a-z0-9]+$/i).test(f['name']);
         });
-        if(indexFiles.length == 0) {
-            console.log('No Index');
-            return;
-        }
         console.log('Indices: ', indexFiles);
-        var renderers = indexFiles.map(function(indexFile) {
-            var r = get_renderer(indexFile);
-            if(r === null) {
-                return {'file': indexFile,
-                        'priority': null,
-                        'renderer': null};
-            }else{
-                return {'file': indexFile,
-                        'priority': r['priority'],
-                        'renderer': r['renderer']};
-            }
-        }).filter(function(r) {
-            return r['renderer'] !== null;
-        }).sort(function(af, bf) {
-            var a = af['priority'];
-            var b = af['priority'];
-            if(a < b) {
-                return -1;
-            }else if(a > b) {
-                return 1;
-            }else{
-                return 0;
-            }
+        var matched = indexFiles.filter(function(indexFile) {
+            return (/.svg$/i).test(indexFile['name']);
         });
-        if(renderers.length === 0) {
-            console.log('Unsupported index file: ', indexFiles);
+        if(matched.length === 0) {
+            console.log('No SVG: ', indexFiles);
+            load_desc(indexFiles);
             return;
         }
-        var indexFile = renderers[0]['file'];
-        var renderer = renderers[0]['renderer'];
         $.ajax({
-            url: get_content_url(indexFile['path'])
+            url: get_content_url(matched[0]['path'])
         }).done(function(data) {
-            $('#notebook_index .index_filename').text(indexFile['name']);
-            var panel = $('#notebook_index .index_content');
+            console.log('SVG loaded', data);
+            $('#notebook_index_flow .index_filename').text(matched[0]['name']);
+            var panel = $('#notebook_index_flow .index_content');
             panel.empty();
-            panel.append(renderer(data));
-            $('#notebook_index').show();
+            panel.append($(data.documentElement));
+            $('#notebook_index_flow').show();
+            load_desc(indexFiles);
         }).fail(function(jqXHR, textStatus, errorThrown) {
             console.error(errorThrown);
         });
+    }
+
+    function generate_panel(suffix) {
+        var panel = $('<div></div>');
+        panel.attr('id', 'notebook_index_' + suffix);
+        panel.addClass('notebook_index');
+        var filename = $('<div></div>');
+        filename.addClass('index_filename');
+        panel.append(filename);
+        var content = $('<div></div>');
+        content.addClass('index_content');
+        panel.append(content);
+        panel.hide();
+        return panel;
     }
 
     function load_ipython_extension () {
@@ -95,16 +94,8 @@ define([
             .attr('href', require.toUrl('./main.css'))
             .appendTo('head');
 
-        var panel = $('<div></div>');
-        panel.attr('id', 'notebook_index');
-        var filename = $('<div></div>');
-        filename.addClass('index_filename');
-        panel.append(filename);
-        var content = $('<div></div>');
-        content.addClass('index_content');
-        panel.append(content);
-        panel.hide();
-        $('#notebooks').append(panel);
+        $('#notebook_toolbar').before(generate_panel('flow'));
+        $('#notebook_list').after(generate_panel('desc'));
 
         $.ajax({
             url: get_tree_url() + '?type=directory&_=' + (new Date()).getTime()

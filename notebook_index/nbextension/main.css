@@ -1,10 +1,10 @@
-#notebook_index {
+.notebook_index {
     margin: 0;
     padding: 0;
     border: 1px solid #ddd;
 }
 
-#notebook_index .index_filename {
+.notebook_index .index_filename {
     background-color: #eee;
     color: #777;
     border-bottom: 1px solid #ddd;
@@ -13,7 +13,7 @@
     padding: 0.5em;
 }
 
-#notebook_index .index_content {
+.notebook_index .index_content {
     padding: 1em;
     margin: 0.1em;
 }
