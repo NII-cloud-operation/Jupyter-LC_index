@@ -24,6 +24,15 @@ define([
         return utils.url_path_join(baseUrl, 'files/' + path);
     }
 
+    function get_notebook_url(filename) {
+        var baseUrl = utils.get_body_data('baseUrl');
+        var path = utils.get_body_data('notebookPath');
+        if(path.length > 0) {
+            path += '/';
+        }
+        return utils.url_path_join(baseUrl, 'notebooks/' + path + filename);
+    }
+
     function load_desc(indexFiles) {
         var matched = indexFiles.filter(function(indexFile) {
             return (/.md$/i).test(indexFile['name']);
@@ -62,6 +71,13 @@ define([
             url: get_content_url(matched[0]['path'])
         }).done(function(data) {
             console.log('SVG loaded', data);
+            var anchors = data.getElementsByTagName('a');
+            for(var i = 0; i < anchors.length; i ++) {
+                var anchor = anchors.item(i);
+                var url = anchor.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
+                anchor.setAttributeNS('http://www.w3.org/1999/xlink', 'href',
+                                      get_notebook_url(url));
+            }
             $('#notebook_index_flow .index_filename').text(matched[0]['name']);
             var panel = $('#notebook_index_flow .index_content');
             panel.empty();
