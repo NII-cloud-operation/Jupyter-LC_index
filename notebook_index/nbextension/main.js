@@ -97,7 +97,7 @@ define([
         filename.addClass('index_filename');
         panel.append(filename);
         var content = $('<div></div>');
-        content.addClass('index_content');
+        content.addClass('index_content').addClass('rendered_html');
         panel.append(content);
         panel.hide();
         return panel;
