@@ -33,6 +33,20 @@ define([
         return utils.url_path_join(baseUrl, 'notebooks/' + path + filename);
     }
 
+    function resolve_url(url, urlType) {
+        if((/^https?\:\/\//i).test(url) || (/^\//i).test(url)) {
+            return null;
+        }
+        var baseUrl = utils.get_body_data('baseUrl');
+        var path = utils.get_body_data('notebookPath');
+        if(path.length > 0) {
+            path += '/';
+        }
+        return utils.url_path_join(utils.url_path_join(baseUrl,
+                                                       urlType + '/' + path),
+                                   url);
+    }
+
     function load_desc(indexFiles) {
         var matched = indexFiles.filter(function(indexFile) {
             return (/.md$/i).test(indexFile['name']);
@@ -47,7 +61,24 @@ define([
             $('#notebook_index_desc .index_filename').text(matched[0]['name']);
             var panel = $('#notebook_index_desc .index_content');
             panel.empty();
-            panel.append($(marked(data)));
+            var rendered = $(marked(data));
+            rendered.find('img').each(function(index) {
+                var url = $(this).attr('src');
+                var resolvedUrl = resolve_url(url, 'files');
+                if(resolvedUrl != null) {
+                    console.log('image url', resolvedUrl);
+                    $(this).attr('src', resolvedUrl);
+                }
+            });
+            rendered.find('a').each(function(index) {
+                var url = $(this).attr('href');
+                var resolvedUrl = resolve_url(url, 'notebooks');
+                if(resolvedUrl != null) {
+                    console.log('link url', resolvedUrl);
+                    $(this).attr('href', resolvedUrl);
+                }
+            });
+            panel.append(rendered);
             $('#notebook_index_desc').show();
         }).fail(function(jqXHR, textStatus, errorThrown) {
             console.error(errorThrown);
@@ -97,7 +128,7 @@ define([
         filename.addClass('index_filename');
         panel.append(filename);
         var content = $('<div></div>');
-        content.addClass('index_content');
+        content.addClass('index_content').addClass('rendered_html');
         panel.append(content);
         panel.hide();
         return panel;
