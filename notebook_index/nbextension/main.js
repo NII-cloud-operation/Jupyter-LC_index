@@ -77,6 +77,7 @@ define([
                     console.log('link url', resolvedUrl);
                     $(this).attr('href', resolvedUrl);
                 }
+                $(this).attr('target', '_blank');
             });
             panel.append(rendered);
             $('#notebook_index_desc').show();
@@ -108,6 +109,7 @@ define([
                 var url = anchor.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
                 anchor.setAttributeNS('http://www.w3.org/1999/xlink', 'href',
                                       get_notebook_url(url));
+                anchor.setAttribute('target', '_blank');
             }
             $('#notebook_index_flow .index_filename').text(matched[0]['name']);
             var panel = $('#notebook_index_flow .index_content');
