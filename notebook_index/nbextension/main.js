@@ -13,9 +13,15 @@ define([
 ) {
     "use strict";
 
+    var mod_name = 'notebook_index';
+    var log_prefix = '[' + mod_name + ']';
+
+    var last_tree_url = null;
+    var baseHref = null;
+
     function get_tree_url() {
         var baseUrl = utils.get_body_data('baseUrl');
-        var path = utils.get_body_data('notebookPath');
+        var path = window.location.href.substring(baseHref.length);
         return utils.url_path_join(baseUrl, 'api/contents/' + path);
     }
 
@@ -45,6 +51,19 @@ define([
         return utils.url_path_join(utils.url_path_join(baseUrl,
                                                        urlType + '/' + path),
                                    url);
+    }
+
+    function load_current_index() {
+        $('#notebook_index_flow').hide();
+        $('#notebook_index_desc').hide();
+        last_tree_url = get_tree_url()
+        $.ajax({
+            url: last_tree_url + '?type=directory&_=' + (new Date()).getTime()
+        }).done(function(data) {
+            load_index(data);
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            console.error(errorThrown);
+        });
     }
 
     function load_desc(indexFiles) {
@@ -136,6 +155,29 @@ define([
         return panel;
     }
 
+    function scan_tree() {
+        var current_tree_url = get_tree_url();
+        if (current_tree_url != last_tree_url) {
+            load_current_index();
+        }
+    }
+
+    function get_base_path() {
+        var firstHref = window.location.href;
+        var notebookPath = utils.get_body_data('notebookPath');
+        console.log(log_prefix, 'URL: windown.location.href=' + firstHref +
+                    ', notebookPath=' + notebookPath);
+        var decodedHref = decodeURI(firstHref);
+        var last = decodedHref.substring(decodedHref.length - notebookPath.length);
+        if (last != notebookPath) {
+            console.error(log_prefix, 'Unexpected path: ' + last +
+                          ' (Expected: ' + notebookPath + ')');
+            return null;
+        }
+        var encodedPath = encodeURI(notebookPath);
+        return firstHref.substring(0, firstHref.length - encodedPath.length);
+    }
+
     function load_ipython_extension () {
         $('<link>')
             .attr('rel', 'stylesheet')
@@ -146,12 +188,14 @@ define([
         $('#notebook_toolbar').before(generate_panel('flow'));
         $('#notebook_list').after(generate_panel('desc'));
 
-        $.ajax({
-            url: get_tree_url() + '?type=directory&_=' + (new Date()).getTime()
-        }).done(function(data) {
-            load_index(data);
-        }).fail(function(jqXHR, textStatus, errorThrown) {
-            console.error(errorThrown);
+        baseHref = get_base_path();
+        if (baseHref == null) {
+            return;
+        }
+        console.log(log_prefix, 'Base URL: ' + baseHref);
+        load_current_index();
+        $("#notebook_list").bind("DOMSubtreeModified", function() {
+            scan_tree();
         });
     }
 
