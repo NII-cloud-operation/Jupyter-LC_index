@@ -1,0 +1,3 @@
+blockdiag {
+   SVG -> Markdown;
+}
