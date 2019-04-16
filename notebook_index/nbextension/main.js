@@ -17,11 +17,11 @@ define([
     var log_prefix = '[' + mod_name + ']';
 
     var last_tree_url = null;
-    var baseHref = null;
+    var base_href = null;
 
     function get_tree_url() {
         var baseUrl = utils.get_body_data('baseUrl');
-        var path = window.location.href.substring(baseHref.length);
+        var path = window.location.href.substring(base_href.length);
         return utils.url_path_join(baseUrl, 'api/contents/' + path);
     }
 
@@ -163,19 +163,23 @@ define([
     }
 
     function get_base_path() {
-        var firstHref = window.location.href;
-        var notebookPath = utils.get_body_data('notebookPath');
-        console.log(log_prefix, 'URL: windown.location.href=' + firstHref +
-                    ', notebookPath=' + notebookPath);
-        var decodedHref = decodeURI(firstHref);
-        var last = decodedHref.substring(decodedHref.length - notebookPath.length);
-        if (last != notebookPath) {
+        var first_href = window.location.href;
+        var hash_pos = first_href.indexOf('#');
+        if (hash_pos >= 0) {
+            first_href = first_href.substring(0, hash_pos);
+        }
+        var notebook_path = utils.get_body_data('notebookPath');
+        console.log(log_prefix, 'URL: windown.location.href=' + first_href +
+                    ', notebookPath=' + notebook_path);
+        var decoded_href = decodeURI(first_href);
+        var last = decoded_href.substring(decoded_href.length - notebook_path.length);
+        if (last != notebook_path) {
             console.error(log_prefix, 'Unexpected path: ' + last +
-                          ' (Expected: ' + notebookPath + ')');
+                          ' (Expected: ' + notebook_path + ')');
             return null;
         }
-        var encodedPath = encodeURI(notebookPath);
-        return firstHref.substring(0, firstHref.length - encodedPath.length);
+        var encoded_path = encodeURI(notebook_path);
+        return first_href.substring(0, first_href.length - encoded_path.length);
     }
 
     function load_ipython_extension () {
@@ -188,11 +192,11 @@ define([
         $('#notebook_toolbar').before(generate_panel('flow'));
         $('#notebook_list').after(generate_panel('desc'));
 
-        baseHref = get_base_path();
-        if (baseHref == null) {
+        base_href = get_base_path();
+        if (base_href == null) {
             return;
         }
-        console.log(log_prefix, 'Base URL: ' + baseHref);
+        console.log(log_prefix, 'Base URL: ' + base_href);
         load_current_index();
         $("#notebook_list").bind("DOMSubtreeModified", function() {
             scan_tree();
