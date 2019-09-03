@@ -14,11 +14,11 @@
   <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="128" x="67" y="46" />
   <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="128" x="259" y="46" />
   <rect fill="rgb(255,255,255)" height="40" stroke="rgb(0,0,0)" width="128" x="64" y="40" />
-  <a xlink:href="TestNotebook1.ipynb">
+  <a xlink:href="SubNotebook1.ipynb">
     <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="23" x="128.5" y="65">SVG</text>
   </a>
   <rect fill="rgb(255,255,255)" height="40" stroke="rgb(0,0,0)" width="128" x="256" y="40" />
-  <a xlink:href="Test%20Notebook2.ipynb">
+  <a xlink:href="Sub%20Notebook2.ipynb">
     <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="53" x="320.5" y="65">Markdown</text>
   </a>
   <path d="M 192 60 L 248 60" fill="none" stroke="rgb(0,0,0)" />
