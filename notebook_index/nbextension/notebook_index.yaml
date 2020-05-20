@@ -1,0 +1,6 @@
+Type: Jupyter Notebook Extension
+Name: LC index
+Section: tree
+Description: "An extension that put README.svg and README.md on the tree page of Jupyter"
+Main: main.js
+Compatibility: 5.x 6.x
