@@ -9,7 +9,7 @@ setup_args = dict(name='lc-index',
       packages=['notebook_index'],
       include_package_data=True,
       zip_safe=False,
-      platforms=['Jupyter Notebook 5.x'],
+      platforms=['Jupyter Notebook 5.x', 'Jupyter Notebook 6.x'],
       install_requires=[
           'notebook>=4.2.0',
       ]
