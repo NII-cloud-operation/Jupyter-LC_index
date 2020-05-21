@@ -4,7 +4,7 @@ Jupyter-LC\_index is an extension that puts README.svg and README.md on the tree
 
 ![example](./example/image.png)
 
-If you have both of .md and .svg in the directory, the SVG appears on top of the page and Markdown appears on the bottom.
+README.svg appears on top of the page, and README.md appears on the bottom.
 
 ## Prerequisite
 
