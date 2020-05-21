@@ -1,6 +1,6 @@
 # Jupyter-LC\_index [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NII-cloud-operation/Jupyter-LC_index/master)
 
-Jupyter-LC\_index is an extension that put README.svg and README.md on the tree page of Jupyter.
+Jupyter-LC\_index is an extension that puts README.svg and README.md on the tree page of Jupyter.
 
 ![example](./example/image.png)
 
