@@ -8,7 +8,7 @@ COPY . /tmp/nbindex
 RUN pip install --no-cache /tmp/nbindex
 
 RUN mv /tmp/nbindex/example $HOME/ && chown $NB_USER -R $HOME/example && \
-    cp /tmp/nbindex/README.md $HOME/
+    cp /tmp/nbindex/README.* $HOME/ && chown $NB_USER $HOME/README.*
 USER $NB_UID
 
 RUN jupyter nbextensions_configurator enable --user && \

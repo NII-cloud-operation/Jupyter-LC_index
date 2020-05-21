@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg viewBox="0 0 1150 820" xmlns="http://www.w3.org/2000/svg" xmlns:inkspace="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs id="defs_block">
+    <filter height="1.504" id="filter_blur" inkspace:collect="always" width="1.1575" x="-0.07875" y="-0.252">
+      <feGaussianBlur id="feGaussianBlur3780" inkspace:collect="always" stdDeviation="4.2" />
+    </filter>
+  </defs>
+  <title>blockdiag</title>
+  <desc>{
+  node_width=200;
+  span_height=20;
+  span_width=150;
+  default_fontsize=18;
+
+  group all_files { color="#FFFFFF"; shape="line";
+    head_left [textcolor="red", style="dotted", width=300, fontsize=16, label="Files in the current directory"];
+    group { color="#8FEFEF"; shape="line";
+      group { color="#AFEFEF";
+        "Notebook 1.ipynb" [shape="note", height=100]; 
+        "..." [shape = "dots", height=5]; 
+        "Notebook N.ipynb" [shape="note", height=100]; 
+      }
+
+    README.svg [shape ="note", height=100];
+    README.md [shape ="note", height=100];
+    }
+  }
+
+
+  group view { color="#FFFFFF"; shape="line";
+    head_right [textcolor="red", style="dotted", width=400, fontsize=16,label="SVG diagram on top and Markdown at bottom"];
+    group {color="#CCCCFF"; shape="line";
+      SVG [shape="ellipse", height=150, label="SVG Diagram"];
+      space_v1 [shape="none"];
+      list1 [label="File List View", height=150]; 
+      space_v2 [shape="none"];
+      Markdown [height=200, label="Markdown View"]; 
+    }
+  }
+
+  head_left -&gt; head_right [style="none"];
+  "..." -&gt; list1;
+  README.svg -&gt; SVG [style="10,3,5,3"];
+  README.md -&gt; Markdown;
+}
+</desc>
+  <rect fill="rgb(175,239,239)" height="390" style="filter:url(#filter_blur)" width="336" x="132" y="75" />
+  <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="300" x="153" y="26" />
+  <polygon fill="rgb(0,0,0)" points="203,111 387,111 403,127 403,211 203,211 203,111" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <polygon fill="rgb(0,0,0)" points="203,341 387,341 403,357 403,441 203,441 203,341" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <polygon fill="rgb(0,0,0)" points="203,486 387,486 403,502 403,586 203,586 203,486" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <polygon fill="rgb(0,0,0)" points="203,656 387,656 403,672 403,756 203,756 203,656" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="400" x="603" y="26" />
+  <ellipse cx="803" cy="161" fill="rgb(0,0,0)" rx="100.0" ry="75.0" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <rect fill="rgb(0,0,0)" height="150" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="200" x="703" y="316" />
+  <rect fill="rgb(0,0,0)" height="200" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="200" x="703" y="606" />
+  <rect fill="rgb(255,255,255)" height="40" stroke="rgb(0,0,0)" stroke-dasharray="2" width="300" x="150" y="20" />
+  <text fill="rgb(255,0,0)" font-family="sans-serif" font-size="16" font-style="normal" font-weight="normal" text-anchor="middle" textLength="261" x="300.5" y="48">Files in the current directory</text>
+  <polygon fill="rgb(255,255,255)" points="200,105 384,105 400,121 400,205 200,205 200,105" stroke="rgb(0,0,0)" />
+  <path d="M 384 105 L 384 121" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 384 121 L 400 121" fill="none" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="18" font-style="normal" font-weight="normal" text-anchor="middle" textLength="157" x="300.5" y="164">Notebook 1.ipynb</text>
+  <ellipse cx="300.0" cy="270.0" fill="rgb(0,0,0)" rx="4.0" ry="4.0" stroke="rgb(0,0,0)" />
+  <ellipse cx="300.0" cy="250.0" fill="rgb(0,0,0)" rx="4.0" ry="4.0" stroke="rgb(0,0,0)" />
+  <ellipse cx="300.0" cy="290.0" fill="rgb(0,0,0)" rx="4.0" ry="4.0" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(255,255,255)" points="200,335 384,335 400,351 400,435 200,435 200,335" stroke="rgb(0,0,0)" />
+  <path d="M 384 335 L 384 351" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 384 351 L 400 351" fill="none" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="18" font-style="normal" font-weight="normal" text-anchor="middle" textLength="157" x="300.5" y="394">Notebook N.ipynb</text>
+  <polygon fill="rgb(255,255,255)" points="200,480 384,480 400,496 400,580 200,580 200,480" stroke="rgb(0,0,0)" />
+  <path d="M 384 480 L 384 496" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 384 496 L 400 496" fill="none" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="18" font-style="normal" font-weight="normal" text-anchor="middle" textLength="98" x="300.0" y="539">README.svg</text>
+  <polygon fill="rgb(255,255,255)" points="200,650 384,650 400,666 400,750 200,750 200,650" stroke="rgb(0,0,0)" />
+  <path d="M 384 650 L 384 666" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 384 666 L 400 666" fill="none" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="18" font-style="normal" font-weight="normal" text-anchor="middle" textLength="88" x="300.0" y="709">README.md</text>
+  <rect fill="rgb(255,255,255)" height="40" stroke="rgb(0,0,0)" stroke-dasharray="2" width="400" x="600" y="20" />
+  <text fill="rgb(255,0,0)" font-family="sans-serif" font-size="16" font-style="normal" font-weight="normal" text-anchor="middle" textLength="357" x="800.5" y="48">SVG diagram on top and Markdown at bottom</text>
+  <ellipse cx="800" cy="155" fill="rgb(255,255,255)" rx="100.0" ry="75.0" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="18" font-style="normal" font-weight="normal" text-anchor="middle" textLength="108" x="800.0" y="164">SVG Diagram</text>
+  <rect fill="rgb(255,255,255)" height="150" stroke="rgb(0,0,0)" width="200" x="700" y="310" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="18" font-style="normal" font-weight="normal" text-anchor="middle" textLength="137" x="800.5" y="394">File List View</text>
+  <rect fill="rgb(255,255,255)" height="200" stroke="rgb(0,0,0)" width="200" x="700" y="600" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="18" font-style="normal" font-weight="normal" text-anchor="middle" textLength="127" x="800.5" y="709">Markdown View</text>
+  <path d="M 400 530 L 563 530" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="10 3 5 3" />
+  <path d="M 563 530 L 563 155" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="10 3 5 3" />
+  <path d="M 563 155 L 692 155" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="10 3 5 3" />
+  <polygon fill="rgb(0,0,0)" points="699,155 692,151 692,159 699,155" stroke="rgb(0,0,0)" />
+  <path d="M 400 700 L 692 700" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="699,700 692,696 692,704 699,700" stroke="rgb(0,0,0)" />
+  <path d="M 400 270 L 525 270" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 525 270 L 525 385" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 525 385 L 559.0 385" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 559.0 385.0 A4.0,4.0 0 0 1 567.0 385.0" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 567.0 385 L 692 385" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="699,385 692,381 692,389 699,385" stroke="rgb(0,0,0)" />
+  <path d="M 400 270 L 525 270" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 525 270 L 525 385" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 525 385 L 559.0 385" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 559.0 385.0 A4.0,4.0 0 0 1 567.0 385.0" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 567.0 385 L 692 385" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="699,385 692,381 692,389 699,385" stroke="rgb(0,0,0)" />
+  <path d="M 400 530 L 563 530" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="10 3 5 3" />
+  <path d="M 563 530 L 563 155" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="10 3 5 3" />
+  <path d="M 563 155 L 692 155" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="10 3 5 3" />
+  <polygon fill="rgb(0,0,0)" points="699,155 692,151 692,159 699,155" stroke="rgb(0,0,0)" />
+  <path d="M 400 700 L 692 700" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="699,700 692,696 692,704 699,700" stroke="rgb(0,0,0)" />
+  <path d="M 400 270 L 525 270" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 525 270 L 525 385" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 525 385 L 559.0 385" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 559.0 385.0 A4.0,4.0 0 0 1 567.0 385.0" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 567.0 385 L 692 385" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="699,385 692,381 692,389 699,385" stroke="rgb(0,0,0)" />
+  <path d="M 400 270 L 525 270" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 525 270 L 525 385" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 525 385 L 559.0 385" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 559.0 385.0 A4.0,4.0 0 0 1 567.0 385.0" fill="none" stroke="rgb(0,0,0)" />
+  <path d="M 567.0 385 L 692 385" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="699,385 692,381 692,389 699,385" stroke="rgb(0,0,0)" />
+  <rect fill="none" height="790" stroke="rgb(255,255,255)" stroke-width="3" width="336" x="132" y="15" />
+  <rect fill="none" height="730" stroke="rgb(143,239,239)" stroke-width="3" width="336" x="132" y="75" />
+  <rect fill="none" height="790" stroke="rgb(255,255,255)" stroke-width="3" width="436" x="582" y="15" />
+  <rect fill="none" height="730" stroke="rgb(204,204,255)" stroke-width="3" width="436" x="582" y="75" />
+</svg>
