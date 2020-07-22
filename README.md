@@ -20,3 +20,6 @@ To use the extension you will also need to install and enable, you can use Jupyt
         $ jupyter nbextension enable --py notebook_index
 
 then restart Jupyter notebook.
+
+## How to Use
+https://github.com/mnagaku/notebooks-diagram is a good example.
