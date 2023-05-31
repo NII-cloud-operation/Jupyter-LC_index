@@ -13,8 +13,9 @@ RUN mv /tmp/nbindex/example $HOME/ && chown $NB_USER -R $HOME/example && \
 RUN jupyter nbclassic-extension install --py jupyter_nbextensions_configurator --sys-prefix && \
     jupyter nbclassic-extension enable --py jupyter_nbextensions_configurator --sys-prefix && \
     jupyter nbclassic-serverextension enable --py jupyter_nbextensions_configurator --sys-prefix && \
-    jupyter nbextension install --py --sys-prefix notebook_index && \
-    jupyter nbextension enable --py --sys-prefix notebook_index
+    jupyter nbclassic-extension install --py --sys-prefix notebook_index && \
+    jupyter nbclassic-extension enable --py --sys-prefix notebook_index && \
+    fix-permissions /home/$NB_USER
 
 USER $NB_UID
 
