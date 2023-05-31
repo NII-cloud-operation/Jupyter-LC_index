@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup_args = dict(name='lc-index',
-      version='0.1',
+      version='0.2.0.dev1',
       description='',
       author='NII',
       packages=['notebook_index'],
