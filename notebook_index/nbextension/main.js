@@ -19,6 +19,9 @@ define([
     var last_tree_url = null;
     var base_href = null;
 
+    // on nbclassic should call marked.marked
+    const marked_ = typeof marked.marked === 'function' ? marked.marked : marked;
+
     function get_tree_url() {
         var baseUrl = utils.get_body_data('baseUrl');
         var path = get_notebook_path();
@@ -80,7 +83,7 @@ define([
             $('#notebook_index_desc .index_filename').text(matched[0]['name']);
             var panel = $('#notebook_index_desc .index_content');
             panel.empty();
-            var rendered = $(marked(data));
+            var rendered = $(marked_(data));
             rendered.find('img').each(function(index) {
                 var url = $(this).attr('src');
                 var resolvedUrl = resolve_url(url, 'files');
