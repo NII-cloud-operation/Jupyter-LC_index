@@ -48,7 +48,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
         let ret = documents.openOrReveal(item.path, widgetName);
         console.log(ret);
       } else {
-        console.log(MarkdownFileName + " or " + SvgFileName + ' are not found');
+        console.log(MarkdownFileName + " nor " + SvgFileName + ' are not found');
       }
     });
   }
