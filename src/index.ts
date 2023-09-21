@@ -6,7 +6,8 @@ import {
 import { IDocumentManager } from '@jupyterlab/docmanager';
 import { IFileBrowserFactory } from '@jupyterlab/filebrowser';
 
-const fileName = 'README.md';
+const MarkdownFileName = 'README.md';
+const SvgFileName = 'README.svg';
 
 /**
  * Initialization data for the lc_index extension.
@@ -20,7 +21,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     documents: IDocumentManager,
     fileBrowserFactory: IFileBrowserFactory
   ) => {
-    console.debug('JupyterLab extension lc_index is activated!');
+    console.log('JupyterLab extension lc_index is activated!');
 
     app.restored.then(() => {
       const fileBrowser = fileBrowserFactory.tracker.currentWidget;
@@ -28,14 +29,26 @@ const plugin: JupyterFrontEndPlugin<void> = {
         throw new Error('file browser is not set');
       }
 
-      const item = find(
+      // README.md
+      let item = find(
         fileBrowser.model.items(),
-        item => item.name === fileName
+        item => new RegExp(MarkdownFileName, "i").test(item.name)
       );
-      if (item) {
-        documents.openOrReveal(fileName, 'Markdown Preview');
+      let widgetName = "Markdown Preview";
+      if(!item) {
+        // README.svg
+        item = find(
+          fileBrowser.model.items(),
+          item => new RegExp(SvgFileName, "i").test(item.name)
+        );
+        widgetName = "Image";
+      }
+      if(item) {
+        console.log("open: " + item.path);
+        let ret = documents.openOrReveal(item.path, widgetName);
+        console.log(ret);
       } else {
-        console.debug(fileName + ' is not found');
+        console.log(MarkdownFileName + " or " + SvgFileName + ' are not found');
       }
     });
   }
