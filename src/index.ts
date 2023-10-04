@@ -30,25 +30,25 @@ const plugin: JupyterFrontEndPlugin<void> = {
       }
 
       // README.md
-      let item = find(
-        fileBrowser.model.items(),
-        item => new RegExp(MarkdownFileName, "i").test(item.name)
+      let item = find(fileBrowser.model.items(), item =>
+        new RegExp(MarkdownFileName, 'i').test(item.name)
       );
-      let widgetName = "Markdown Preview";
-      if(!item) {
+      let widgetName = 'Markdown Preview';
+      if (!item) {
         // README.svg
-        item = find(
-          fileBrowser.model.items(),
-          item => new RegExp(SvgFileName, "i").test(item.name)
+        item = find(fileBrowser.model.items(), item =>
+          new RegExp(SvgFileName, 'i').test(item.name)
         );
-        widgetName = "Image";
+        widgetName = 'Image';
       }
-      if(item) {
-        console.log("open: " + item.path);
-        let ret = documents.openOrReveal(item.path, widgetName);
+      if (item) {
+        console.log('open: ' + item.path);
+        const ret = documents.openOrReveal(item.path, widgetName);
         console.log(ret);
       } else {
-        console.log(MarkdownFileName + " nor " + SvgFileName + ' are not found');
+        console.log(
+          MarkdownFileName + ' nor ' + SvgFileName + ' are not found'
+        );
       }
     });
   }
