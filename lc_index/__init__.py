@@ -10,7 +10,7 @@ def _jupyter_labextension_paths():
 # nbextension
 def _jupyter_nbextension_paths():
     return [dict(
-        section="notebook",
+        section="tree",
         src="nbextension",
         dest="lc_index",
         require="lc_index/main")]
