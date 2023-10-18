@@ -2,10 +2,10 @@ FROM jupyter/scipy-notebook:latest
 
 USER root
 
-RUN pip3 install --no-cache  jupyter_nbextensions_configurator
+RUN pip install --no-cache  jupyter_nbextensions_configurator
 
 COPY . /tmp/nbindex
-RUN pip3 install --no-cache /tmp/nbindex
+RUN pip install --no-cache /tmp/nbindex
 
 RUN mv /tmp/nbindex/example $HOME/ && chown $NB_USER -R $HOME/example && \
     cp /tmp/nbindex/README.* $HOME/ && chown $NB_USER $HOME/README.*
