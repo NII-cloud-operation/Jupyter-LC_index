@@ -7,6 +7,8 @@ RUN pip install --no-cache  jupyter_nbextensions_configurator
 COPY . /tmp/nbindex
 RUN pip install --no-cache /tmp/nbindex
 
+RUN jupyter labextension enable lc_index
+
 RUN mv /tmp/nbindex/example $HOME/ && chown $NB_USER -R $HOME/example && \
     cp /tmp/nbindex/README.* $HOME/ && chown $NB_USER $HOME/README.*
 
