@@ -38,7 +38,7 @@ test('should emit an activation console message', async ({ page }) => {
     logs.push(message.text());
   });
   // load jupyter lab
-  await page.goto(undefined, { waitUntil: 'domcontentloaded' });
+  await page.goto();
 
   expect(
     logs.filter(s => s === 'JupyterLab extension lc_index is activated!')
