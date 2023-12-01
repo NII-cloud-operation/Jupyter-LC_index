@@ -31,13 +31,13 @@ const plugin: JupyterFrontEndPlugin<void> = {
 
       // README.md
       let item = find(fileBrowser.model.items(), item =>
-        new RegExp(`\^${MarkdownFileName}\$`, 'i').test(item.name)
+        new RegExp(`^${MarkdownFileName}$`, 'i').test(item.name)
       );
       let widgetName = 'Markdown Preview';
       if (!item) {
         // README.svg
         item = find(fileBrowser.model.items(), item =>
-          new RegExp(`\^${SvgFileName}\$`, 'i').test(item.name)
+          new RegExp(`^${SvgFileName}$`, 'i').test(item.name)
         );
         widgetName = 'Image';
       }
