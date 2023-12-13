@@ -6,6 +6,7 @@ function delay(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// https://github.com/jupyterlab/jupyterlab/blob/9844a6fdb680aeae28a4d6238433f751ce5a6204/galata/src/fixtures.ts#L319-L336
 async function myWaitForApplication({ baseURL }, use) {
   const waitIsReady = async (
     page: Page,
@@ -15,13 +16,6 @@ async function myWaitForApplication({ baseURL }, use) {
       state: 'detached'
     });
     //! not wait for launcher tab.
-    //   await helpers.waitForCondition(() => {
-    //     return helpers.activity.isTabActive('Launcher');
-    //   });
-    //   // Oddly current tab is not always set to active
-    //   if (!(await helpers.isInSimpleMode())) {
-    //     await helpers.activity.activateTab('Launcher');
-    //   }
   };
   await use(waitIsReady);
 }
