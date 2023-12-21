@@ -1,28 +1,19 @@
-# Jupyter-LC\_index [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NII-cloud-operation/Jupyter-LC_index/master)
+# lc_index
 
-Jupyter-LC\_index is an extension that puts README.svg and README.md on the tree page of Jupyter.
-
-![example](./example/image.png)
-
-README.svg appears on top of the page, and README.md appears on the bottom.
+[![Github Actions Status](https://github.com/entap/jupyterlab_lc_index.git/workflows/Build/badge.svg)](https://github.com/entap/jupyterlab_lc_index.git/actions/workflows/build.yml)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/entap/jupyterlab_lc_index.git/main?urlpath=lab)
+Open README on started
 
 ## Requirements
 
-* JupyterLab >= 4.0.0
+- JupyterLab >= 4.0.0
 
 ## Install
 
-        $ pip install git+https://github.com/NII-cloud-operation/Jupyter-LC_index
+To install the extension, execute:
 
-To use the extension you will also need to install and enable, you can use Jupyter subcommand:
-
-        $ jupyter nbclassic-extension install --py notebook_index
-        $ jupyter nbclassic-extension enable --py notebook_index
-
-then restart Jupyter lab.
-
-## How to Use
-https://github.com/mnagaku/notebooks-diagram is a good example.
+```bash
+pip install lc_index
+```
 
 ## Uninstall
 
@@ -46,7 +37,7 @@ The `jlpm` command is JupyterLab's pinned version of
 # Clone the repo to your local environment
 # Change directory to the lc_index directory
 # Install package in development mode
-pip install -e .
+pip install -e "."
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite
 # Rebuild extension Typescript source after making changes
