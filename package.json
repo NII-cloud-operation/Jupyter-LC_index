@@ -7,9 +7,9 @@
     "jupyterlab",
     "jupyterlab-extension"
   ],
-  "homepage": "https://github.com/entap/jupyterlab_lc_index",
+  "homepage": "https://github.com/NII-cloud-operation/Jupyter-LC_index",
   "bugs": {
-    "url": "https://github.com/entap/jupyterlab_lc_index/issues"
+    "url": "https://github.com/NII-cloud-operation/Jupyter-LC_index/issues"
   },
   "license": "BSD-3-Clause",
   "author": {
@@ -27,7 +27,7 @@
   "style": "style/index.css",
   "repository": {
     "type": "git",
-    "url": "https://github.com/entap/jupyterlab_lc_index.git"
+    "url": "https://github.com/NII-cloud-operation/Jupyter-LC_index.git"
   },
   "workspaces": [
     "ui-tests"
