@@ -102,7 +102,7 @@ export class JupyterNotebook7Opener
       panel.addWidget(
         new LabelWidget(filename, () => {
           onClick(index).then(() => {
-            console.log('Clicked:', filename);
+            console.log('[lc_index] Clicked:', filename);
           });
         })
       );
