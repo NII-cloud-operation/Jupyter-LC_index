@@ -20,7 +20,7 @@ export function observeFileBrowser(
 ) {
   const fileBrowser = fileBrowserFactory.tracker.currentWidget;
   if (!fileBrowser) {
-    console.warn('file browser is not set, waiting...');
+    console.warn('[lc_index] file browser is not set, waiting...');
     fileBrowserFactory.tracker.currentChanged.connect(() => {
       const fileBrowser = fileBrowserFactory.tracker.currentWidget;
       if (fileBrowser) {

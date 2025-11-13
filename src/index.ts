@@ -38,7 +38,6 @@ const plugin: JupyterFrontEndPlugin<void> = {
       let removeOldWidget: (() => void) | null = () => {};
       const opener = createOpener(app, platform, documents, renderMimeRegistry);
       observeFileBrowser(fileBrowserFactory, fileBrowser => {
-        console.log('fileBrowser:', fileBrowser.model.path);
         if (detectedPath === fileBrowser.model.path) {
           return;
         }
@@ -58,18 +57,22 @@ const plugin: JupyterFrontEndPlugin<void> = {
           removeOldWidget();
         }
         if (svgItem || markdownItem) {
-          console.log('open:', svgItem?.path, markdownItem?.path);
+          console.log('[lc_index] open:', svgItem?.path, markdownItem?.path);
           opener
             .open(fileBrowser.model.path, svgItem?.path, markdownItem?.path)
             .then((remove: () => void) => {
               removeOldWidget = remove;
             })
             .catch((reason: any) => {
-              console.error(reason);
+              console.error('[lc_index]', reason);
             });
         } else {
           console.log(
-            MarkdownFileName + ' nor ' + SvgFileName + ' are not found'
+            '[lc_index] ' +
+              MarkdownFileName +
+              ' nor ' +
+              SvgFileName +
+              ' are not found'
           );
         }
       });
