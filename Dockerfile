@@ -1,6 +1,16 @@
-FROM jupyter/scipy-notebook:latest
+FROM quay.io/jupyter/scipy-notebook:notebook-7.4.7
 
 USER root
+
+# Install Node.js 20.x (required for Etherpad build)
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    apt-get clean && \
+    mkdir -p /.npm && \
+    chown jovyan:users -R /.npm && \
+    rm -rf /var/lib/apt/lists/*
+ENV NPM_CONFIG_PREFIX=/.npm
+ENV PATH=/.npm/bin/:${PATH}
 
 RUN pip install --no-cache  jupyter_nbextensions_configurator
 
