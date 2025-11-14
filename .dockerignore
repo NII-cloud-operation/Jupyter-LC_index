@@ -1,0 +1,13 @@
+lib/
+node_modules/
+lc_index/labextension/
+*.tsbuildinfo
+ui-tests/test-results/
+ui-tests/playwright-report/
+ui-tests/e2e-notebook/artifacts/
+.git/
+.github/
+.eslintcache
+.stylelintcache
+__pycache__/
+.DS_Store

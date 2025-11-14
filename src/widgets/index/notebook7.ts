@@ -44,6 +44,7 @@ export class JupyterNotebook7Opener
     oldPanels.forEach(panel => panel.dispose());
     let mainPanel: { panel: Panel; widgets: LabelWidget[] } | null = null;
     const leftPanel = await this.createLeftPanel(
+      basePath,
       linkedWidgets,
       async (index: number) => {
         const targetIndex = this.panels.tab.widgets.findIndex(
@@ -81,7 +82,6 @@ export class JupyterNotebook7Opener
       }
     );
     this.panels.shell.add(leftPanel, 'left');
-
     this.panels.shell.activateById(leftPanel.id);
     return () => {
       leftPanel.dispose();
@@ -89,11 +89,12 @@ export class JupyterNotebook7Opener
   }
 
   private async createLeftPanel(
+    basePath: string,
     linkedWidgets: LinkedWidget[],
     onClick: (index: number) => Promise<void>
   ) {
     const panel = new Panel();
-    panel.id = 'lc_index:index-left-widget';
+    panel.id = `lc_index:index-left-widget:${basePath}`;
     panel.addClass('lc-index-widget');
     const widgetInstances = await Promise.all(
       linkedWidgets.map(async ({ widget }) => await widget())
