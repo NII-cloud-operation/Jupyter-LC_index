@@ -1,0 +1,26 @@
+@import url('base.css');
+
+.lc-index-widget {
+  display: block;
+  overflow: auto;
+  padding: 1em;
+}
+
+.lc-index-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  margin-top: 4px;
+}
+
+.lc-index-header-icon {
+  margin-left: auto;
+}
+
+.lc-index-header h1 {
+  font-size: 1em;
+}
+
+.lc-index-header div {
+  margin-left: auto;
+}
